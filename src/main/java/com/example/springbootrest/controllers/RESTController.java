@@ -29,6 +29,17 @@ public class RESTController {
         return employee;
     }
 
+    @GetMapping("/employees/{employeeName}/{employeeSurname}")
+    public Employee getEmployeeByNameAndSurname(@PathVariable String employeeName,
+                                                @PathVariable String employeeSurname) {
+        Employee employee = employeeService.findByNameAndAndSurname(employeeName, employeeSurname);
+        if (employee == null) {
+            throw new NoSuchEmployeeException("There is no employee with NAME = " + employeeName +
+                    " and SURNAME = " + employeeSurname + " in DB!");
+        }
+        return employee;
+    }
+
     @PostMapping("/employees")
     public Employee addNewEmployee(@RequestBody Employee employee) {
         employeeService.saveEmployee(employee);
@@ -53,7 +64,7 @@ public class RESTController {
         return "Employee with ID = " + id + " was successfully deleted";
     }
 
-    @GetMapping("/employee/name/{name}")
+    @GetMapping("/employees/name/{name}")
     public List<Employee> showAllEmployeesByName(@PathVariable String name) {
         return employeeService.findAllByName(name);
     }

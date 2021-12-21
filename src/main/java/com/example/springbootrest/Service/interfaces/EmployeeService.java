@@ -11,4 +11,5 @@ public interface EmployeeService {
     public Employee getEmployee(Integer id);
     public void deleteEmployee(Integer id);
     public List<Employee> findAllByName(String name);
+    public Employee findByNameAndAndSurname(String name, String surname);
 }

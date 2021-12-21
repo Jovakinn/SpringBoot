@@ -49,4 +49,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> findAllByName(String name) {
         return employeeRepository.findAllByName(name);
     }
+
+    @Override
+    public Employee findByNameAndAndSurname(String name, String surname) {
+        return employeeRepository.findByNameAndAndSurname(name, surname);
+    }
 }
