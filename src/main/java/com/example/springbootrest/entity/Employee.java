@@ -33,6 +33,43 @@ public class Employee {
         this.salary = salary;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", department='" + department + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (getId() != null ? !getId().equals(employee.getId()) : employee.getId() != null) return false;
+        if (getName() != null ? !getName().equals(employee.getName()) : employee.getName() != null) return false;
+        if (getSurname() != null ? !getSurname().equals(employee.getSurname()) : employee.getSurname() != null)
+            return false;
+        if (getDepartment() != null ? !getDepartment().equals(employee.getDepartment()) : employee.getDepartment() != null)
+            return false;
+        return getSalary() != null ? getSalary().equals(employee.getSalary()) : employee.getSalary() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getSurname() != null ? getSurname().hashCode() : 0);
+        result = 31 * result + (getDepartment() != null ? getDepartment().hashCode() : 0);
+        result = 31 * result + (getSalary() != null ? getSalary().hashCode() : 0);
+        return result;
+    }
+
     public Integer getId() {
         return id;
     }

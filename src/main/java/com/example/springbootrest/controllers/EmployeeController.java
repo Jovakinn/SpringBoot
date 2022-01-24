@@ -1,6 +1,7 @@
 package com.example.springbootrest.controllers;
 
 import com.example.springbootrest.Service.interfaces.EmployeeService;
+import com.example.springbootrest.Service.interfaces.WorkplaceService;
 import com.example.springbootrest.entity.Employee;
 import com.example.springbootrest.exception_handling.NoSuchEmployeeException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class RESTController {
+public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
@@ -41,9 +42,8 @@ public class RESTController {
     }
 
     @PostMapping("/employees")
-    public Employee addNewEmployee(@RequestBody Employee employee) {
+    public void addNewEmployee(@RequestBody Employee employee) {
         employeeService.saveEmployee(employee);
-        return employee;
     }
 
     @PutMapping("/employees")
