@@ -3,15 +3,17 @@ package com.example.springbootrest.controllers;
 import com.example.springbootrest.Service.interfaces.WorkplaceService;
 import com.example.springbootrest.entity.Workplace;
 import com.example.springbootrest.exception_handling.NoSuchWorkplaceException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/info")
 public class WorkplaceController {
-    @Autowired
-    private WorkplaceService workplaceService;
+    private final WorkplaceService workplaceService;
+
+    public WorkplaceController(WorkplaceService workplaceService) {
+        this.workplaceService = workplaceService;
+    }
 
     @GetMapping("/workplace")
     public List<Workplace> showAllWorkplace() {

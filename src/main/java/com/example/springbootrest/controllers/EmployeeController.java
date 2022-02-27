@@ -4,15 +4,17 @@ import com.example.springbootrest.Service.interfaces.EmployeeService;
 import com.example.springbootrest.Service.interfaces.WorkplaceService;
 import com.example.springbootrest.entity.Employee;
 import com.example.springbootrest.exception_handling.NoSuchEmployeeException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
-    @Autowired
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @GetMapping("/employees")
     public List<Employee> showAllEmployees() {

@@ -3,15 +3,17 @@ package com.example.springbootrest.controllers;
 import com.example.springbootrest.Service.interfaces.DepartmentService;
 import com.example.springbootrest.entity.Department;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/departments")
 @Slf4j
 public class DepartmentController {
-    @Autowired
-    private DepartmentService departmentService;
+    private final DepartmentService departmentService;
+
+    public DepartmentController(DepartmentService departmentService) {
+        this.departmentService = departmentService;
+    }
 
     @PostMapping("/save")
     public Department saveDepartment(@RequestBody Department department){
