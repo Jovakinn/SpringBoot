@@ -1,16 +1,18 @@
 package com.example.springbootrest.Service.Implements;
 
-import com.example.springbootrest.DAO.Interfaces.DepartmentRepository;
-import com.example.springbootrest.Service.interfaces.DepartmentService;
+import com.example.springbootrest.DAO.DepartmentRepository;
+import com.example.springbootrest.Service.interfaces.IDepartmentService;
 import com.example.springbootrest.entity.Department;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DepartmentServiceImpl implements DepartmentService {
+public class DepartmentService implements IDepartmentService {
 
-    @Autowired
-    private DepartmentRepository departmentRepository;
+    private final DepartmentRepository departmentRepository;
+
+    public DepartmentService(DepartmentRepository departmentRepository) {
+        this.departmentRepository = departmentRepository;
+    }
 
     @Override
     public Department saveDepartment(Department department) {

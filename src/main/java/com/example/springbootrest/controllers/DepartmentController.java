@@ -1,6 +1,6 @@
 package com.example.springbootrest.controllers;
 
-import com.example.springbootrest.Service.interfaces.DepartmentService;
+import com.example.springbootrest.Service.interfaces.IDepartmentService;
 import com.example.springbootrest.entity.Department;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/departments")
 @Slf4j
 public class DepartmentController {
-    private final DepartmentService departmentService;
+    private final IDepartmentService departmentService;
 
-    public DepartmentController(DepartmentService departmentService) {
-        this.departmentService = departmentService;
+    public DepartmentController(IDepartmentService IDepartmentService) {
+        this.departmentService = IDepartmentService;
     }
 
     @PostMapping("/save")

@@ -1,4 +1,4 @@
-package com.example.springbootrest.DAO.Interfaces;
+package com.example.springbootrest.DAO;
 
 import com.example.springbootrest.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;

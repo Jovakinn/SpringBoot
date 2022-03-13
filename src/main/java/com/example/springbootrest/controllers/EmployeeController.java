@@ -1,19 +1,18 @@
 package com.example.springbootrest.controllers;
 
-import com.example.springbootrest.Service.interfaces.EmployeeService;
-import com.example.springbootrest.Service.interfaces.WorkplaceService;
+import com.example.springbootrest.Service.interfaces.IEmployeeService;
 import com.example.springbootrest.entity.Employee;
 import com.example.springbootrest.exception_handling.NoSuchEmployeeException;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 public class EmployeeController {
-    private final EmployeeService employeeService;
+    private final IEmployeeService employeeService;
 
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public EmployeeController(IEmployeeService IEmployeeService) {
+        this.employeeService = IEmployeeService;
     }
 
     @GetMapping("/employees")

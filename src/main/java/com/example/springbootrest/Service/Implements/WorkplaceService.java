@@ -1,19 +1,21 @@
 package com.example.springbootrest.Service.Implements;
 
-import com.example.springbootrest.DAO.Interfaces.WorkplaceRepository;
-import com.example.springbootrest.Service.interfaces.WorkplaceService;
+import com.example.springbootrest.DAO.WorkplaceRepository;
+import com.example.springbootrest.Service.interfaces.IWorkplaceService;
 import com.example.springbootrest.entity.Workplace;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class WorkplaceServiceImpl implements WorkplaceService {
+public class WorkplaceService implements IWorkplaceService {
 
-    @Autowired
-    private WorkplaceRepository workplaceRepository;
+    private final WorkplaceRepository workplaceRepository;
+
+    public WorkplaceService(WorkplaceRepository workplaceRepository) {
+        this.workplaceRepository = workplaceRepository;
+    }
 
     @Override
     public List<Workplace> getAllWorkplace() {
