@@ -25,7 +25,7 @@ public class EmployeeController {
         Employee employee = employeeService.getEmployee(Integer.valueOf(employeeId));
         if (employee == null) {
             throw new NoSuchEmployeeException("There is no employee with ID = " + employeeId + " " +
-                    "in Database");
+                    "in Database", new Throwable());
         }
 
         return employee;
@@ -37,7 +37,7 @@ public class EmployeeController {
         Employee employee = employeeService.findByNameAndAndSurname(employeeName, employeeSurname);
         if (employee == null) {
             throw new NoSuchEmployeeException("There is no employee with NAME = " + employeeName +
-                    " and SURNAME = " + employeeSurname + " in DB!");
+                    " and SURNAME = " + employeeSurname + " in DB!", new Throwable());
         }
         return employee;
     }
@@ -58,7 +58,7 @@ public class EmployeeController {
         Employee employee = employeeService.getEmployee(id);
         if (employee == null) {
             throw new NoSuchEmployeeException("There is no employee with ID = " +
-                    id + " in Database");
+                    id + " in Database", new Throwable());
         }
 
         employeeService.deleteEmployee(id);

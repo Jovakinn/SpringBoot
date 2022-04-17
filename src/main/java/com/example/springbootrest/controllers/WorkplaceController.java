@@ -25,7 +25,7 @@ public class WorkplaceController {
         Workplace workplace = workplaceService.getWorkplace(Integer.valueOf(workplaceId));
         if (workplace == null) {
             throw new NoSuchWorkplaceException("There is no workplace with ID = " + workplaceId + " " +
-                    "in Database");
+                    "in Database", new Throwable());
         }
         return workplace;
     }
@@ -36,7 +36,7 @@ public class WorkplaceController {
         Workplace workplace = workplaceService.findByNameAndCapitalization(workplaceName, workplaceCapitalization);
         if (workplace == null) {
             throw new NoSuchWorkplaceException("There is no workplace with NAME = " + workplaceName +
-                    " and Capitalization = " + workplaceCapitalization + " in DB!");
+                    " and Capitalization = " + workplaceCapitalization + " in DB!", new Throwable());
         }
         return workplace;
     }
@@ -52,7 +52,7 @@ public class WorkplaceController {
         Workplace workplace = workplaceService.getWorkplace(id);
         if (workplace == null) {
             throw new NoSuchWorkplaceException("There is no workplace with ID = " +
-                    id + " in Database");
+                    id + " in Database", new Throwable());
         }
 
         workplaceService.deleteWorkplace(id);
