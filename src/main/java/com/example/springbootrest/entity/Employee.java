@@ -9,6 +9,10 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @SequenceGenerator(
+            name = "employee_id_sequence",
+            sequenceName = "employee_sequence"
+    )
     private Integer id;
 
     @Column(name = "name")
