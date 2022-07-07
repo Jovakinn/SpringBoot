@@ -17,10 +17,14 @@ public class Account {
     private Long id;
     private String firstName;
     private String lastName;
-    private Optional<String> middleName;
+    private String middleName;
     private Integer age;
     private Gender gender;
     private LocalDate birthday;
     private LocalDate creationTime;
     private BigDecimal balance = BigDecimal.ZERO;
+
+    public Optional<String> getMiddleName() {
+        return Optional.ofNullable(middleName);
+    }
 }
