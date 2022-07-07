@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
-@RequestMapping("/ping")
+@RequestMapping("/api/ping")
 public class PingController {
     private final Map<String, User> users = new ConcurrentHashMap<>();
     private HttpServletRequest req;
@@ -36,7 +36,7 @@ public class PingController {
     }
 
     @SneakyThrows
-    @GetMapping
+    @GetMapping("/get_all_users")
     public List<String> getAllUsers() {
         return users.entrySet()
                 .stream()
@@ -49,7 +49,7 @@ public class PingController {
         return userHolder.getCurrentUser();
     }
 
-    @GetMapping
+    @GetMapping("session_id")
     public String getSessionId(@CookieValue("JSESSIONID") String sessionId) {
         return sessionId;
     }
