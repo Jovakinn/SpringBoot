@@ -1,16 +1,16 @@
 package com.example.springbootrest.Service.Implements;
 
 import com.example.springbootrest.DAO.DepartmentRepository;
-import com.example.springbootrest.Service.interfaces.IDepartmentService;
+import com.example.springbootrest.Service.interfaces.DepartmentService;
 import com.example.springbootrest.entity.Department;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DepartmentService implements IDepartmentService {
+public class DepartmentServiceImpl implements DepartmentService {
 
     private final DepartmentRepository departmentRepository;
 
-    public DepartmentService(DepartmentRepository departmentRepository) {
+    public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
         this.departmentRepository = departmentRepository;
     }
 

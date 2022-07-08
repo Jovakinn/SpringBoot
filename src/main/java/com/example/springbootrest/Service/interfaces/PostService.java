@@ -4,6 +4,6 @@ import com.example.springbootrest.entity.Post;
 
 import java.util.List;
 
-public interface IPostService {
+public interface PostService {
     List<Post> getPostsList();
 }

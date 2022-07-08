@@ -4,7 +4,7 @@ import com.example.springbootrest.entity.Employee;
 
 import java.util.List;
 
-public interface IEmployeeService {
+public interface EmployeeService {
 
     List<Employee> getAllEmployees();
     void saveEmployee(Employee employee);

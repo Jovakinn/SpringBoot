@@ -3,7 +3,7 @@ package com.example.springbootrest.Service.interfaces;
 import com.example.springbootrest.entity.Workplace;
 import java.util.List;
 
-public interface IWorkplaceService {
+public interface WorkplaceService {
     List<Workplace> getAllWorkplace();
     void saveWorkplace(Workplace workplace);
     Workplace getWorkplace(Integer id);

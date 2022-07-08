@@ -1,17 +1,17 @@
 package com.example.springbootrest.Service.Implements;
 
 import com.example.springbootrest.DAO.EmployeeRepository;
-import com.example.springbootrest.Service.interfaces.IEmployeeService;
+import com.example.springbootrest.Service.interfaces.EmployeeService;
 import com.example.springbootrest.entity.Employee;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeService implements IEmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
 
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 

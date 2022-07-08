@@ -1,6 +1,6 @@
 package com.example.springbootrest.controllers;
 
-import com.example.springbootrest.Service.interfaces.IWorkplaceService;
+import com.example.springbootrest.Service.interfaces.WorkplaceService;
 import com.example.springbootrest.entity.Workplace;
 import com.example.springbootrest.exception_handling.NoSuchWorkplaceException;
 import org.springframework.web.bind.annotation.*;
@@ -9,10 +9,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/info")
 public class WorkplaceController {
-    private final IWorkplaceService workplaceService;
+    private final WorkplaceService workplaceService;
 
-    public WorkplaceController(IWorkplaceService IWorkplaceService) {
-        this.workplaceService = IWorkplaceService;
+    public WorkplaceController(WorkplaceService WorkplaceService) {
+        this.workplaceService = WorkplaceService;
     }
 
     @GetMapping("/workplace")
