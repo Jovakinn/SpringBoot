@@ -11,8 +11,8 @@ import java.util.List;
 public class EmployeeController {
     private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeService EmployeeService) {
-        this.employeeService = EmployeeService;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping("/employees")
@@ -68,5 +68,12 @@ public class EmployeeController {
     @GetMapping("/employees/name/{name}")
     public List<Employee> showAllEmployeesByName(@PathVariable String name) {
         return employeeService.findAllByName(name);
+    }
+
+    @GetMapping("/employees/salary_search")
+    public List<Employee> showAllEmployeesBySalaryBetween(
+            @RequestParam Integer salaryFrom, @RequestParam Integer salaryTo
+    ) {
+        return employeeService.searchEmployeesBySalaryIsBetween(salaryFrom, salaryTo);
     }
 }

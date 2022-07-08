@@ -12,4 +12,5 @@ public interface EmployeeService {
     void deleteEmployee(Integer id);
     List<Employee> findAllByName(String name);
     Employee findByNameAndAndSurname(String name, String surname);
+    List<Employee> searchEmployeesBySalaryIsBetween(Integer salaryFrom, Integer salaryTo);
 }

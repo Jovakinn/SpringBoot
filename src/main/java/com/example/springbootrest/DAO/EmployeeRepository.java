@@ -10,4 +10,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findAllByName(String name);
     @Query("select e from Employee e where e.name = ?1 and e.surname = ?2")
     Employee findByNameAndAndSurname(String name, String surname);
+
+    List<Employee> searchEmployeesBySalaryIsBetween(Integer salaryFrom, Integer salaryTo);
 }
