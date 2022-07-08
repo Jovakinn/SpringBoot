@@ -1,16 +1,19 @@
 package com.example.springbootrest.Service.interfaces;
 
+import com.example.springbootrest.DTO.EmployeeDto;
 import com.example.springbootrest.entity.Employee;
 
 import java.util.List;
 
 public interface EmployeeService {
-
-    List<Employee> getAllEmployees();
-    void saveEmployee(Employee employee);
-    Employee getEmployee(Integer id);
+    List<EmployeeDto> getAllEmployees();
+    void saveEmployee(EmployeeDto employeeDto);
+    EmployeeDto getEmployee(Integer id);
     void deleteEmployee(Integer id);
-    List<Employee> findAllByName(String name);
-    Employee findByNameAndAndSurname(String name, String surname);
-    List<Employee> searchEmployeesBySalaryIsBetween(Integer salaryFrom, Integer salaryTo);
+    List<EmployeeDto> findAllByName(String name);
+    EmployeeDto findByNameAndAndSurname(String name, String surname);
+    List<EmployeeDto> searchEmployeesBySalaryIsBetween(Integer salaryFrom, Integer salaryTo);
+    void updateEmployee(EmployeeDto employeeDto);
+    EmployeeDto convertEntityToDto(Employee employee);
+    Employee convertDtoToEntity(EmployeeDto employeeDto);
 }

@@ -1,13 +1,14 @@
 package com.example.springbootrest.controllers;
 
+import com.example.springbootrest.DTO.EmployeeDto;
 import com.example.springbootrest.Service.interfaces.EmployeeService;
-import com.example.springbootrest.entity.Employee;
 import com.example.springbootrest.exception_handling.NoSuchEmployeeException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/employee_service")
 public class EmployeeController {
     private final EmployeeService employeeService;
 
@@ -16,25 +17,24 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public List<Employee> showAllEmployees() {
+    public List<EmployeeDto> showAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
     @GetMapping("/employees/{employeeId}")
-    public Employee getEmployee(@PathVariable String employeeId) {
-        Employee employee = employeeService.getEmployee(Integer.valueOf(employeeId));
+    public EmployeeDto getEmployee(@PathVariable String employeeId) {
+        EmployeeDto employee = employeeService.getEmployee(Integer.valueOf(employeeId));
         if (employee == null) {
             throw new NoSuchEmployeeException("There is no employee with ID = " + employeeId + " " +
                     "in Database", new Throwable());
         }
-
         return employee;
     }
 
     @GetMapping("/employees/{employeeName}/{employeeSurname}")
-    public Employee getEmployeeByNameAndSurname(@PathVariable String employeeName,
+    public EmployeeDto getEmployeeByNameAndSurname(@PathVariable String employeeName,
                                                 @PathVariable String employeeSurname) {
-        Employee employee = employeeService.findByNameAndAndSurname(employeeName, employeeSurname);
+        EmployeeDto employee = employeeService.findByNameAndAndSurname(employeeName, employeeSurname);
         if (employee == null) {
             throw new NoSuchEmployeeException("There is no employee with NAME = " + employeeName +
                     " and SURNAME = " + employeeSurname + " in DB!", new Throwable());
@@ -42,20 +42,20 @@ public class EmployeeController {
         return employee;
     }
 
-    @PostMapping("/employees")
-    public void addNewEmployee(@RequestBody Employee employee) {
-        employeeService.saveEmployee(employee);
+    @PostMapping("/employees/add")
+    public void addNewEmployee(@RequestBody EmployeeDto employeeDto) {
+        employeeService.saveEmployee(employeeDto);
     }
 
-    @PutMapping("/employees")
-    public Employee updateEmployee(@RequestBody Employee employee) {
-        employeeService.saveEmployee(employee);
-        return employee;
+    @PutMapping("/employees/update")
+    public ResponseEntity<EmployeeDto> updateEmployee(@RequestBody EmployeeDto employeeDto) {
+        employeeService.updateEmployee(employeeDto);
+        return ResponseEntity.ok(employeeDto);
     }
 
     @DeleteMapping("/employees/{id}")
     public String deleteEmployee(@PathVariable int id) {
-        Employee employee = employeeService.getEmployee(id);
+        EmployeeDto employee = employeeService.getEmployee(id);
         if (employee == null) {
             throw new NoSuchEmployeeException("There is no employee with ID = " +
                     id + " in Database", new Throwable());
@@ -66,12 +66,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/name/{name}")
-    public List<Employee> showAllEmployeesByName(@PathVariable String name) {
+    public List<EmployeeDto> showAllEmployeesByName(@PathVariable String name) {
         return employeeService.findAllByName(name);
     }
 
     @GetMapping("/employees/salary_search")
-    public List<Employee> showAllEmployeesBySalaryBetween(
+    public List<EmployeeDto> showAllEmployeesBySalaryBetween(
             @RequestParam Integer salaryFrom, @RequestParam Integer salaryTo
     ) {
         return employeeService.searchEmployeesBySalaryIsBetween(salaryFrom, salaryTo);
