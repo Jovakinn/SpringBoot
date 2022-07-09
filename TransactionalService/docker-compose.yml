@@ -1,16 +1,16 @@
-version: '3'
-networks:
-  default:
+version: '3.6'
+
 services:
-  keycloak:
-    image: jboss/keycloak
+
+  mysql:
+    image: mysql
+    platform: linux/amd64
     restart: always
-    environment:
-      KEYCLOAK_VERSION: 6.0.1
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-      KEYCLOAK_IMPORT: /tmp/realm-export.json
-    volumes:
-      - ./keycloak/realm-export.json:/tmp/realm-export.json
     ports:
-      - "8180:8080"
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_HOST: localhost
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_for_transaction_microservice
+      MYSQL_USER: mysql_trans
+      MYSQL_PASSWORD: mysql_trans
